@@ -37,7 +37,7 @@ jobs:
 
       - name: Run fuzzing
         run: |
-          $HOME/go/bin/ffuf || true
+          $HOME/go/bin/ffuf -w $HOME/SQL-Injection -u http://localhost:3000/rest/user/login -X POST -H $'Content-Type: application/json' -d '{"email": "FUZZ", "password": "pass"}'
 
       - name: Get Logs from Service
         run: |
